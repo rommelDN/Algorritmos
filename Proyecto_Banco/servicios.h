@@ -10,7 +10,7 @@ public:
     TCodigo id_servicio;
     TSaldo saldo;
     TEstado estado;
-    TFApertura::tm fecha_apertura;
+    TFApertura fecha_apertura;
 public:
     //Constructor
     Servicios(TCodigo id_servicio, TSaldo saldo, TEstado estado, TFApertura fecha_apertura)
