@@ -4,18 +4,21 @@
 
 using namespace std;
 
-template <typename TCodigo,typename TSaldo,typename TEstado,typename TFApertura>
+template <typename TCodigo,typename TSaldo, typename TTitular,typename TCuenta,typename TFApertura>
 class Servicios {
 public:
     TCodigo id_servicio;
     TSaldo saldo;
-    TEstado estado;
+    TCuenta numero_cuenta;
+    TTitular titular;
     TFApertura fecha_apertura;
 public:
+
     //Constructor
-    Servicios(TCodigo id_servicio, TSaldo saldo, TEstado estado, TFApertura fecha_apertura)
-        : id_servicio(id_servicio), saldo(saldo), estado(estado), fecha_apertura(fecha_apertura) {
-    };
+    Servicios(TCodigo id_servicio, TSaldo saldo, TTitular titular, TCuenta numero_cuenta, TFApertura fecha_apertura)
+		: id_servicio(id_servicio), saldo(saldo), titular(titular), numero_cuenta(numero_cuenta), fecha_apertura(fecha_apertura) {
+	};
+
 	//Destructor
     ~Servicios() {};
 
@@ -23,11 +26,11 @@ public:
     void consultarSaldo()const;
     void cancelarServicio()const;
 	void generarEstadoCuenta()const;
+    virtual void generarServicio()=0;
 
 	//Getters
 	TCodigo getIdServicio()const {};
 	TSaldo getSaldo()const {};
-	TEstado getEstado()const {};
 	TFApertura getFechaApertura()const {};
 
 	//Setters
@@ -37,42 +40,40 @@ public:
 //###################################
 // Implementacion de Metodos
 //###################################
-template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-Servicios<TCodigo, TSaldo, TEstado, TFApertura>::~Servicios() {}
 
-template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-void Servicios<TCodigo, TSaldo, TEstado, TFApertura>::consultarSaldo() const {
+template <typename TCodigo, typename TSaldo, typename TTitular, typename TCuenta, typename TFApertura>
+Servicios<TCodigo,TSaldo,TTitular,TCuenta, TFApertura>::~Servicios() {}
+
+template <typename TCodigo, typename TSaldo, typename TTitular, typename TCuenta, typename TFApertura>
+void Servicios<TCodigo, TSaldo, TTitular, TCuenta, TFApertura>::consultarSaldo() const {
 	cout << "El saldo actual es__: " << saldo << endl;   
 };
-template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-void Servicios<TCodigo,TSaldo,TEstado,TFApertura>::generarEstadoCuenta() const {
+template <typename TCodigo, typename TSaldo, typename TTitular, typename TCuenta, typename TFApertura>
+void Servicios<TCodigo, TSaldo, TTitular, TCuenta, TFApertura>::generarEstadoCuenta() const {
     cout << "El estado de cuenta es__: "<<endl
     << "|   ID Servicio: " << id_servicio<<endl
 	<< "|   Saldo: " << saldo << endl
 	<< "|   Estado: " << estado << endl
 	<< "|   Fecha de Apertura: " << fecha_apertura.tm_mday << "/" << fecha_apertura.tm_mon + 1 << "/" << fecha_apertura.tm_year + 1900 << endl;
 };
-template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-void Servicios<TCodigo, TSaldo, TEstado, TFApertura>::cancelarServicio() const {
+template <typename TCodigo, typename TSaldo, typename TTitular, typename TCuenta, typename TFApertura>
+void Servicios<TCodigo, TSaldo, TTitular, TCuenta, TFApertura>::cancelarServicio() const {
     cout << "Calculo de intereses no implementado aun." << endl;
 };
 
 //###################################
 // Implementacion de Getters
 //###################################
-template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-TCodigo Servicios<TCodigo, TSaldo, TEstado, TFApertura>::getIdServicio() const {
+
+template <typename TCodigo, typename TSaldo, typename TTitular, typename TCuenta, typename TFApertura>
+TCodigo Servicios<TCodigo, TSaldo, TTitular, TCuenta, TFApertura>::getIdServicio() const {
     return id_servicio;
 };
-template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-TSaldo Servicios<TCodigo, TSaldo, TEstado, TFApertura>::getSaldo() const {
+template <typename TCodigo, typename TSaldo, typename TTitular, typename TCuenta, typename TFApertura>
+TSaldo Servicios<TCodigo, TSaldo, TTitular, TCuenta, TFApertura>::getSaldo() const {
     return saldo;
 };
-template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-TEstado Servicios<TCodigo, TSaldo, TEstado, TFApertura>::getEstado() const {
-    return estado;
-};
-template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-TFApertura Servicios<TCodigo, TSaldo, TEstado, TFApertura>::getFechaApertura() const {
+template <typename TCodigo, typename TSaldo, typename TTitular, typename TCuenta, typename TFApertura>
+TFApertura Servicios<TCodigo, TSaldo, TTitular, TCuenta, TFApertura>::getFechaApertura() const {
     return fecha_apertura;
 };
