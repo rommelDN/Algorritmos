@@ -21,8 +21,8 @@ public:
 
 	//Metodos
     void consultarSaldo()const;
-    void generarEstadoCuenta()const;
-	void calcularIntereses()const;
+    void cancelarServicio()const;
+	void generarEstadoCuenta()const;
 
 	//Getters
 	TCodigo getIdServicio()const {};
@@ -53,7 +53,7 @@ void Servicios<TCodigo,TSaldo,TEstado,TFApertura>::generarEstadoCuenta() const {
 	<< "|   Fecha de Apertura: " << fecha_apertura.tm_mday << "/" << fecha_apertura.tm_mon + 1 << "/" << fecha_apertura.tm_year + 1900 << endl;
 };
 template <typename TCodigo, typename TSaldo, typename TEstado, typename TFApertura>
-void Servicios<TCodigo, TSaldo, TEstado, TFApertura>::calcularIntereses() const {
+void Servicios<TCodigo, TSaldo, TEstado, TFApertura>::cancelarServicio() const {
     cout << "Calculo de intereses no implementado aun." << endl;
 };
 
