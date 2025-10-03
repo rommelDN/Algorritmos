@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CREDITO_H
 #define CREDITO_H
 
@@ -22,9 +23,9 @@ public:
     // Destructor virtual
     virtual ~Credito() {}
 
-    // M�todos
+    // Métodos
     virtual void desembolsar() {
-        cout << "Desembolsando cr�dito por: $" << monto_prestamo << endl;
+        cout << "Desembolsando crédito por: $" << monto_prestamo << endl;
         saldo_pendiente = monto_prestamo;
     }
 
@@ -46,7 +47,7 @@ public:
         cout << "=== CRONOGRAMA DE PAGOS ===" << endl;
         cout << "Monto total: $" << monto_prestamo << endl;
         cout << "Plazo: " << plazo_meses << " meses" << endl;
-        cout << "Tasa de inter�s: " << (tasa_interes * 100) << "%" << endl;
+        cout << "Tasa de interés: " << (tasa_interes * 100) << "%" << endl;
 
         double cuota = monto_prestamo / plazo_meses;
         double saldo = monto_prestamo;
@@ -57,7 +58,7 @@ public:
             saldo -= amortizacion;
 
             cout << "Mes " << i << ": Cuota $" << cuota
-                << " (Inter�s: $" << interes << ", Amortizaci�n: $" << amortizacion << ")" << endl;
+                << " (Interés: $" << interes << ", Amortización: $" << amortizacion << ")" << endl;
         }
     }
 
@@ -72,4 +73,95 @@ public:
     void setSaldoPendiente(double saldo) { saldo_pendiente = saldo; }
 };
 
+
+
+////////////////////////////////////////////////////
+// LISTA ENLAZADA PARA GESTIÓN DE CREDITO
+////////////////////////////////////////////////////
+template <typename T>
+class Nodo {
+public:
+    T dato;
+    Nodo<T>* siguiente;
+
+    Nodo(T valor) : dato(valor), siguiente(nullptr) {}
+};
+
+template <typename T>
+class ListaEnlazada {
+private:
+    Nodo<T>* cabeza;
+    int tamaño;
+
+public:
+    // Constructor
+    ListaEnlazada() : cabeza(nullptr), tamaño(0) {}
+
+    // Destructor
+    ~ListaEnlazada() {
+        limpiar();
+    }
+
+    // Método 1: Insertar al final
+    void insertarFinal(T valor) {
+        Nodo<T>* nuevoNodo = new Nodo<T>(valor);
+
+        if (!cabeza) {
+            cabeza = nuevoNodo;
+        }
+        else {
+            Nodo<T>* actual = cabeza;
+            while (actual->siguiente) {
+                actual = actual->siguiente;
+            }
+            actual->siguiente = nuevoNodo;
+        }
+        tamaño++;
+    }
+
+    // Método 2: Filtrar con lambda
+    ListaEnlazada<T> filtrar(function<bool(T)> criterio) {
+        ListaEnlazada<T> resultado;
+        Nodo<T>* actual = cabeza;
+
+        auto filtrarElementos = [&](Nodo<T>* actual, function<bool(T)> criterio) {
+            while (actual) {
+                if (criterio(actual->dato)) {
+                    resultado.insertarFinal(actual->dato);
+                }
+                actual = actual->siguiente;
+            }
+            };
+
+        filtrarElementos(actual, criterio);
+        return resultado;
+    }
+
+    // Método 3: Aplicar función a todos los elementos
+    void transformar(function<void(T&)> funcion) {
+        Nodo<T>* actual = cabeza;
+        while (actual) {
+            funcion(actual->dato);
+            actual = actual->siguiente;
+        }
+    }
+
+    // Métodos auxiliares
+    int getTamaño() const {
+        return tamaño;
+    }
+
+    bool estaVacia() const {
+        return cabeza == nullptr;
+    }
+
+    void limpiar() {
+        while (cabeza) {
+            Nodo<T>* temp = cabeza;
+            cabeza = cabeza->siguiente;
+            delete temp;
+        }
+        tamaño = 0;
+    }
+};
 #endif
