@@ -23,7 +23,7 @@ public:
 			<<" | Tipo: "<<tipo
 			<<" | Monto: $"<<monto
 			<<" | Fecha: "<<fecha
-			<< std::endl;
+			<<endl;
 	}
 };
 ////////////////////////////////////////////////
@@ -31,12 +31,11 @@ public:
 //Cada nodo contiene una transacción y un puntero al siguiente nodo
 ////////////////////////////////////////////////
 template<typename T>
-struct Nodo
-{
-	T dato;
-	Nodo* siguiente;
+struct NodoTR {
+	T* dato;
+	NodoTR* siguiente;
 
-	Nodo(T* t) {
+	NodoTR(T* t) {
 		dato = t;
 		siguiente = nullptr;
 	};
@@ -47,19 +46,19 @@ struct Nodo
 template<typename T>
 class Lista {
 private:
-	Nodo<T>* cabeza;
+	NodoTR<T>* cabeza;
 public:
 	//Constructor
 	Lista() { cabeza = nullptr; };
 
 	//Métodos
 	void agregar(T* t) {
-		Nodo<T>* nuevo = new Nodo<T>(t);
+		NodoTR<T>* nuevo = new NodoTR<T>(t);
 		if (cabeza == nullptr) {
 			cabeza = nuevo;
 		}
 		else {
-			Nodo<T>* actual = cabeza;
+			NodoTR<T>* actual = cabeza;
 			while (actual->siguiente != nullptr) {
 				actual = actual->siguiente;
 			}
@@ -72,9 +71,9 @@ public:
 			cout << "No hay transacciones." <<endl;
 			return;
 		}
-		Nodo<T>* actual = cabeza;
+		NodoTR<T>* actual = cabeza;
 		while (actual != nullptr) {
-			actual->transaccion->mostrar();
+			actual->dato->mostrar();
 			actual = actual->siguiente;
 		}
 	}

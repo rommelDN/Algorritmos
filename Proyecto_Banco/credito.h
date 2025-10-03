@@ -91,11 +91,11 @@ template <typename T>
 class ListaEnlazada {
 private:
     Nodo<T>* cabeza;
-    int tamaño;
+    int tamano;
 
 public:
     // Constructor
-    ListaEnlazada() : cabeza(nullptr), tamaño(0) {}
+    ListaEnlazada() : cabeza(nullptr), tamano(0) {}
 
     // Destructor
     ~ListaEnlazada() {
@@ -116,7 +116,7 @@ public:
             }
             actual->siguiente = nuevoNodo;
         }
-        tamaño++;
+        tamano++;
     }
 
     // Método 2: Filtrar con lambda
@@ -147,8 +147,8 @@ public:
     }
 
     // Métodos auxiliares
-    int getTamaño() const {
-        return tamaño;
+    int getTamano() const {
+        return tamano;
     }
 
     bool estaVacia() const {
@@ -161,7 +161,7 @@ public:
             cabeza = cabeza->siguiente;
             delete temp;
         }
-        tamaño = 0;
+        tamano = 0;
     }
 };
 #endif

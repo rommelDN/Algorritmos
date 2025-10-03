@@ -11,11 +11,11 @@ class Cuenta: public Servicios<TCodigo, TSaldo, TTitular, TCuenta, TFApertura> {
 public:
 	TInteresTasa tasa_interes;
 	TLimRetiro limite_retiro;
-	Lista<Transaccion> historial;
+	Lista<Transaccion<int,string,double>> historial;
 public:
 	//Constructor
 	Cuenta(TInteresTasa tasa_interes, TLimRetiro limite_retiro, TCodigo id_servicio, TSaldo saldo, TTitular titular, TCuenta numero_cuenta, TFApertura fecha_apertura)
-		: Servicios(id_servicio, saldo, titular, numero_cuenta, fecha_apertura), tasa_interes(tasa_interes), limite_retiro(limite_retiro) {
+		: Servicios<TCodigo , TSaldo , TTitular , TCuenta , TFApertura >(id_servicio,saldo,titular,numero_cuenta,fecha_apertura), tasa_interes(tasa_interes), limite_retiro(limite_retiro) {
 	};
 
 	//Metodos
@@ -28,9 +28,8 @@ public:
 			<<endl;
 	}
 	//Metodos Abstractos
-	virtual void depositar(TSaldo monto, string fecha)=0;
-	virtual void retirar(TSaldo monto, string fecha)=0;
-	virtual void calcularInteres()=0;
+	virtual void depositar(TSaldo monto, std::string fecha)=0;
+	virtual void retirar(TSaldo monto, std::string fecha)=0;
 
 
 	void mostrarHistorial() {
