@@ -5,7 +5,7 @@
 #include "Cu_Empresarial.h"
 
 using namespace std;
-
+ 
 // Función para leer un número entero con validación
 int leerEntero(const string& mensaje) {
     int valor;
