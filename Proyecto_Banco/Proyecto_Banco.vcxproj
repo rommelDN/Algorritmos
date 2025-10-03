@@ -126,9 +126,14 @@
     <ClCompile Include="Proyecto_Banco.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="credito.h" />
+    <ClInclude Include="credito_empresarial.h" />
+    <ClInclude Include="credito_personal.h" />
+    <ClInclude Include="credito_vivienda.h" />
     <ClInclude Include="Cuenta.h" />
     <ClInclude Include="Cu_Empresarial.h" />
     <ClInclude Include="servicios.h" />
+    <ClInclude Include="Transaccion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

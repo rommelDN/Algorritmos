@@ -17,19 +17,23 @@ public:
 	};
 
     //Metodos
-    void depositar(TSaldo monto) override {
+    void depositar(TSaldo monto, string fecha) override {
         this->saldo += monto;
+        this->historial.agregar(new Transaccion(rand() % 1000, "Deposito", monto, fecha));
         cout << "Deposito de " << monto << " realizado. Nuevo saldo: " << this->saldo << endl;
 	};
-    void retirar(TSaldo monto) override {
+
+    void retirar(TSaldo monto, string fecha) override {
         if (monto <= this->saldo && monto <= this->limite_retiro) {
             this->saldo -= monto;
-            std::cout << "Retiro de " << monto << " realizado. Nuevo saldo: " << this->saldo << std::endl;
+            this->historial.agregar(new Transaccion(rand() % 1000, "Retiro", monto, fecha));
+            cout << "Retiro de " << monto << " realizado. Nuevo saldo: " << this->saldo << endl;
         }
         else {
-            std::cout << "Error: Retiro no permitido." << std::endl;
+            cout << "Error: Retiro no permitido." << endl;
         }
-    };
+    }
+
     void calcularInteres() override {
         TSaldo interes = this->saldo * (this->tasa_interes / 100);
         this->saldo += interes;

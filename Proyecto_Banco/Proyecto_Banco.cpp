@@ -1,19 +1,99 @@
-// Proyecto_Banco.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
 
 #include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+using namespace std;
+
+void menuCuentas() {
+    int opcionC;
+    do {
+        cout << "\n====== MENU DE CUENTAS ======\n";
+        cout << "1. Crear Cuenta de Ahorros\n";
+        cout << "2. Crear Cuenta Empresarial\n";
+        cout << "3. Crear Cuenta de Seguro\n";
+        cout << "4. Crear Cuenta de Inversion\n";
+        cout << "0. Regresar\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcionC;
+        switch (opcionC) {
+        case 1:
+            cout << "Funcionalidad para crear cuenta de ahorros no implementada.\n";
+            break;
+        case 2:
+            cout << "Funcionalidad para crear cuenta corriente no implementada.\n";
+            break;
+        case 3:
+            cout << "Funcionalidad para crear cuenta plazo fijo no implementada.\n";
+            break;
+        case 0:
+            cout << "Regresando al menu principal.\n";
+            break;
+        default:
+            cout << "Opcion no valida. Intente de nuevo.\n";
+		}
+    } while (opcionC != 0);
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
+void menuServicios() {
+    int opcionM;
+    do {
+        cout << "\n====== MENU DE SERVICIOS ======\n";
+        cout << "1. Servicios de Cuentas\n";
+        cout << "2. Servicios de Tarjetas\n";
+        cout << "3. Servicios de Creditos\n";
+        cout << "0. Regresar\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcionM;
 
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
+        switch (opcionM) {
+        case 1:
+			menuCuentas();
+            break;
+        case 2:
+            cout << "Funcionalidad para contratar servicio de tarjeta no implementada.\n";
+            break;
+        case 3:
+            cout << "Funcionalidad para contratar servicio de credito no implementada.\n";
+            break;case 0:
+            cout << "Regresando al menu principal.\n";
+            break;
+        default:
+            cout << "Opcion no valida. Intente de nuevo.\n";
+        }
+    } while (opcionM != 0);
+}
+
+int main()
+{
+    
+    int opcion;
+    do {
+        cout << "\n===== CAJA HUANCAYO =====\n";
+        cout << "1. Registrar Cliente\n";
+        cout << "2. Contratar Servicio\n";
+        cout << "2. Listar todas las cuentas\n";
+        cout << "3. Buscar cuenta por numero\n";
+        cout << "4. Ver historial de una cuenta\n";
+        cout << "5. Registrar transaccion (deposito/retiro)\n";
+        cout << "0. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion){
+            case 1:// Lógica para crear cliente
+                cout << "Funcionalidad para crear cliente no implementada.\n";
+				break;
+            case 2://Logica Para contrater Servicios
+				menuServicios();
+                break;
+            case 0:
+                cout << "Saliendo del sistema. ¡Hasta luego!\n";
+                break;
+
+            default:
+			    cout << "Opcion no valida. Intente de nuevo.\n";
+        }
+
+    } while (opcion != 0);
+    return 0;
+}
+

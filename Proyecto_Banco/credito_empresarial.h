@@ -2,7 +2,7 @@
 #ifndef CREDITO_EMPRESARIAL_H
 #define CREDITO_EMPRESARIAL_H
 
-#include "servicio.h"
+#include "servicios.h"
 #include <string>
 
 using namespace std;

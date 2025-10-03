@@ -2,7 +2,7 @@
 #ifndef CREDITO_PERSONAL_H
 #define CREDITO_PERSONAL_H
 
-#include "servicio.h"
+#include "servicios.h"
 #include <string>
 
 using namespace std;

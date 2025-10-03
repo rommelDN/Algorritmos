@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Cuentas">
+      <UniqueIdentifier>{613d3ef7-6563-4651-ac4a-b0d9cb96b280}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Proyecto_Banco.cpp">
@@ -23,11 +26,26 @@
     <ClInclude Include="servicios.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Cuenta.h">
+    <ClInclude Include="credito_empresarial.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Cu_Empresarial.h">
+    <ClInclude Include="credito_personal.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="credito_vivienda.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="credito.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Cuenta.h">
+      <Filter>Archivos de encabezado\Cuentas</Filter>
+    </ClInclude>
+    <ClInclude Include="Cu_Empresarial.h">
+      <Filter>Archivos de encabezado\Cuentas</Filter>
+    </ClInclude>
+    <ClInclude Include="Transaccion.h">
+      <Filter>Archivos de encabezado\Cuentas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include <string>
 #include<iostream>
 #include "servicios.h"
+#include "Transaccion.h"
 using namespace std;
 
 template <typename TInteresTasa, typename TLimRetiro,
@@ -10,6 +11,7 @@ class Cuenta: public Servicios<TCodigo, TSaldo, TTitular, TCuenta, TFApertura> {
 public:
 	TInteresTasa tasa_interes;
 	TLimRetiro limite_retiro;
+	Lista<Transaccion> historial;
 public:
 	//Constructor
 	Cuenta(TInteresTasa tasa_interes, TLimRetiro limite_retiro, TCodigo id_servicio, TSaldo saldo, TTitular titular, TCuenta numero_cuenta, TFApertura fecha_apertura)
@@ -18,17 +20,22 @@ public:
 
 	//Metodos
 	void generarServicio() override {
-		cout << "Cuenta Empresarial ID: " << this->id_servicio
+		cout << "Cuenta ID: " << this->id_servicio
 			<< " | Titular: " << this->titular
-			<< " | Empresa: " << empresa
-			<< " | RUC: " << ruc
 			<< " | Saldo: " << this->saldo
 			<< " | Tasa interés: " << this->tasa_interes
 			<< " | Límite retiro: " << this->limite_retiro
-			<< std::endl;
+			<<endl;
 	}
-	virtual void depositar(TSaldo monto)=0;
-	virtual void retirar(TSaldo monto)=0;
+	//Metodos Abstractos
+	virtual void depositar(TSaldo monto, string fecha)=0;
+	virtual void retirar(TSaldo monto, string fecha)=0;
 	virtual void calcularInteres()=0;
+
+
+	void mostrarHistorial() {
+		cout << "Historial de la cuenta " << this->id_servicio << ":" << endl;
+		historial.mostrar();
+	}
 
 };

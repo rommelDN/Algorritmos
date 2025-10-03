@@ -2,7 +2,7 @@
 #ifndef CREDITO_VIVIENDA_H
 #define CREDITO_VIVIENDA_H
 
-#include "servicio.h"
+#include "servicios.h"
 #include <string>
 
 using namespace std;
