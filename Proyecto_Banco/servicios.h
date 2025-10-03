@@ -208,7 +208,7 @@ public:
 
 
 ////////////////////////////////////////////////////
-// LISTA ENLAZADA PARA GESTIÓN DE SERVICIOS
+// LISTA ENLAZADA PARA GESTIÓN DE SERVICIOS ESTO LO USE PARA LOS TIPOS DE CREDITO
 ////////////////////////////////////////////////////
 template <typename T>
 class Nodo {
